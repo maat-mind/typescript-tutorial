@@ -1,25 +1,30 @@
-import { expect, it } from "vitest";
+import { expect, it } from 'vitest'
 
-export const getName = (params: { first: string; last: string }) => {
-  if (params.last) {
-    return `${params.first} ${params.last}`;
-  }
-  return params.first;
-};
+interface getNameInterface {
+	first: string
+	last?: string
+}
 
-it("Should work with just the first name", () => {
-  const name = getName({
-    first: "Matt",
-  });
+export const getName = (params: getNameInterface) => {
+	if (params.last) {
+		return `${params.first} ${params.last}`
+	}
+	return params.first
+}
 
-  expect(name).toEqual("Matt");
-});
+it('Should work with just the first name', () => {
+	const name = getName({
+		first: 'Matt',
+	})
 
-it("Should work with the first and last name", () => {
-  const name = getName({
-    first: "Matt",
-    last: "Pocock",
-  });
+	expect(name).toEqual('Matt')
+})
 
-  expect(name).toEqual("Matt Pocock");
-});
+it('Should work with the first and last name', () => {
+	const name = getName({
+		first: 'Matt',
+		last: 'Pocock',
+	})
+
+	expect(name).toEqual('Matt Pocock')
+})
